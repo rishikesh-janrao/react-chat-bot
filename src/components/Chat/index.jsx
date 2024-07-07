@@ -75,9 +75,9 @@ function ChatWindow() {
   };
 
   return (
-    <div className="chat-window">
+    <div className={`chat-window ${messages.length === 0 ? "chat-window--full" : ""}`}>
       {getHasActiveChatSession() && <ChatOptions />}
-      <div className={`messages ${messages.length > 0 ? "messages-full" : ""}`}>
+      <div className={`messages ${messages.length > 0 ? "messages--full" : ""}`}>
         {getHasActiveChatSession() &&
           messages.map((message, index) => {
             const timestamp = parseTimestamp(message.timestamp);

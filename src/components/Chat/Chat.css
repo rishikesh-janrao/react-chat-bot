@@ -4,13 +4,16 @@
   flex-direction: column;
   justify-content: space-between;
 }
+.chat-window--full {
+  height: 95vh;
+}
 .messages {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
   overflow-y: scroll;
 }
-.messages-full {
+.messages--full {
   height: 85vh;
 }
 .row {
