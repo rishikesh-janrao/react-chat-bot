@@ -1,6 +1,7 @@
 import axios from "axios";
+import Storage from "../modules/storage";
 
-const useChat = () => {
+export default function useChat() {
   const parseResponse = (text) => {
     let formattedText = text.replaceAll("\n", "<br/>");
     return formattedText;
@@ -36,12 +37,23 @@ const useChat = () => {
   const getCurrentChatID = () => {
     return window.sessionStorage.getItem("currentChatId");
   };
+  const newChat = () => {
+    window.sessionStorage.removeItem("currentChatId");
+    location.replace("/");
+    return;
+  };
+  const deleteThisChat = () => {
+    const currentChatId = getCurrentChatID();
+    window.sessionStorage.removeItem("currentChatId");
+    const { removeChatHistory } = Storage();
+    removeChatHistory(currentChatId);
+  };
 
   return {
     getCurrentChatID,
     getHasActiveChatSession,
     send,
+    newChat,
+    deleteThisChat,
   };
-};
-
-export default useChat;
+}

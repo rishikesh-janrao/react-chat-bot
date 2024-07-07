@@ -7,6 +7,7 @@ import Storage from "../../modules/storage";
 import PropTypes from "prop-types";
 import DotLoader from "../Common/DotLoader";
 import PromptTemplates from "./PromptTemplates";
+import ChatOptions from "./ChatOptions";
 
 function ChatWindow() {
   const { getChat, setChat } = Storage();
@@ -75,6 +76,7 @@ function ChatWindow() {
 
   return (
     <div className="chat-window">
+      {getHasActiveChatSession() && <ChatOptions />}
       <div className={`messages ${messages.length > 0 ? "messages-full" : ""}`}>
         {getHasActiveChatSession() &&
           messages.map((message, index) => {

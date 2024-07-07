@@ -6,6 +6,7 @@ export default function localStorage() {
 
   let chatId = sessionDB.getItem("currentChatId");
   const setChat = (isNewChat, newMessage) => {
+    const allChats = JSON.parse(localDB.getItem("chatsStore")).history;
     if (isNewChat) {
       chatId = uuid();
       window.sessionStorage.setItem("currentChatId", chatId);
@@ -14,6 +15,7 @@ export default function localStorage() {
         "chatsStore",
         JSON.stringify({
           history: {
+            ...allChats,
             [chatId]: [newMessage],
           },
         })
@@ -28,6 +30,7 @@ export default function localStorage() {
         "chatsStore",
         JSON.stringify({
           history: {
+            ...allChats,
             [chatId]: currentChat,
           },
         })
@@ -38,8 +41,23 @@ export default function localStorage() {
   const getChat = (chatId) => {
     return JSON.parse(localDB.getItem("chatsStore")).history[chatId];
   };
+
+  const removeChatHistory = (chatId) => {
+    const history = JSON.parse(localDB.getItem("chatsStore")).history;
+    delete history[chatId];
+    localDB.setItem(
+      "chatsStore",
+      JSON.stringify({
+        history: {
+          ...history,
+        },
+      })
+    );
+    location.replace("/");
+  };
   return {
     setChat,
     getChat,
+    removeChatHistory,
   };
 }
