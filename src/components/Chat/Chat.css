@@ -1,0 +1,99 @@
+.chat-window {
+  display: flex;
+  height: 90vh;
+  width: 90vw;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.messages {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 0.5rem;
+}
+.messages-full {
+  height: 80vh;
+}
+.row {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  flex-direction: column;
+  padding: 2px 0;
+}
+.row--user {
+  align-items: flex-end;
+}
+.row--ai {
+  align-items: flex-start;
+  background-color: transparent;
+}
+.row--gap {
+  gap: 1rem;
+}
+.row--center {
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.prompt {
+  display: flex;
+  bottom: 0;
+  top: auto;
+  justify-content: center;
+}
+.prompt__controls {
+  display: flex;
+  border-radius: 2rem;
+  background-color: var(--main-surface-secondary);
+  width: auto;
+  padding: 0 0.5rem;
+  padding-inline-start: 1rem;
+  width: 80%;
+  min-height: 40%;
+  justify-content: center;
+  align-items: center;
+}
+.prompt__input {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  color: var(--white);
+  font-size: 1.1rem;
+  width: 100%;
+  height: 40px;
+}
+.message-timestamp {
+  display: flex;
+  font-size: 0.6rem;
+  border-top: 2px solid var(--white);
+  width: max-content;
+  margin-top: 0.5rem;
+}
+.message-timestamp--user {
+  border: none;
+}
+.dot-loader {
+  width: 10px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  animation: l5 1s infinite linear alternate;
+}
+@keyframes l5 {
+  0% {
+    box-shadow: 20px 0 #000, -20px 0 #0002;
+    background: #000;
+  }
+  33% {
+    box-shadow: 20px 0 #000, -20px 0 #0002;
+    background: #0002;
+  }
+  66% {
+    box-shadow: 20px 0 #0002, -20px 0 #000;
+    background: #0002;
+  }
+  100% {
+    box-shadow: 20px 0 #0002, -20px 0 #000;
+    background: #000;
+  }
+}
