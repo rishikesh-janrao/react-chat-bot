@@ -6,6 +6,7 @@ import ArrowCircleUpRoundedIcon from "@mui/icons-material/ArrowCircleUpRounded";
 import Storage from "../../modules/storage";
 import PropTypes from "prop-types";
 import DotLoader from "../Common/DotLoader";
+import PromptTemplates from "./PromptTemplates";
 
 function ChatWindow() {
   const { getChat, setChat } = Storage();
@@ -127,6 +128,9 @@ function ChatWindow() {
           </div>
         )}
       </div>
+      {!getHasActiveChatSession() && (
+        <PromptTemplates handleSend={handleSend} />
+      )}
       <div className="prompt">
         <div className="prompt__controls">
           <input
