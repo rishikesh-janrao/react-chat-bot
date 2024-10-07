@@ -1,4 +1,4 @@
-import * as React from "react";
+import { useEffect, useState } from "react";
 import IconButton from "@mui/material/IconButton";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
@@ -15,7 +15,7 @@ const options = [
 const ITEM_HEIGHT = 48;
 
 export default function ThreeDotMenu() {
-  const [anchorEl, setAnchorEl] = React.useState(null);
+  const [anchorEl, setAnchorEl] = useState(null);
   const { deleteThisChat, getCurrentChatID } = useChat();
   const open = Boolean(anchorEl);
   const toggleMenu = (event) => {
