@@ -28,6 +28,7 @@ module.exports = {
   },
   externals: {
     react: "react",
+    React: "react",
     "react-dom": "react-dom",
   },
   mode: "production",
